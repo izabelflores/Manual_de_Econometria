@@ -1,0 +1,57 @@
+---
+title: "Manual Econometria"
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+---
+
+# Visualização de Dados
+
+Neste capítulo iremos utilizar as seguintes bibliotecas:
+
+```{r Bibliotecas, message=FALSE}
+library(tidyverse)
+library(knitr)
+library(magrittr)
+library(ggthemes)
+library(wooldridge)
+```
+
+O *GGPLOT2* é uma biblioteca focada em visualização de dados e gráficos, ele faz parte do *tidyverse,* um pacote "guarda-chuva" que contém uma série de bibliotecas específicas para ciência de dados. A sua estrutura é dada por camadas, a função `ggplot()` cria a base onde será plotado as diferentes camadas do gráfico, para adicionar as camadas usa-se o comando `+`.
+
+```{r eval=FALSE}
+# Exemplo genérico de um gráfico no GGPLOT2
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(
+     mapping = aes(<MAPPINGS>),
+     stat = <STAT>, 
+     position = <POSITION>
+  ) +
+  <COORDINATE_FUNCTION> +
+  <FACET_FUNCTION>
+```
+
+Principais tipos de gráficos
+
++-------------------------+---------------------------+
+| Tipo de gráfico         | Função                    |
++=========================+===========================+
+| Dispersão (scatterplot) | `geom_point()`            |
++-------------------------+---------------------------+
+| Gráfico de barras       | `geom_col()`/`geom_bar()` |
++-------------------------+---------------------------+
+| Histograma              | `geom_histogram()`        |
++-------------------------+---------------------------+
+| Boxplot                 | `geom_boxplot()`          |
++-------------------------+---------------------------+
+| Densidade               | `geom_density()`          |
++-------------------------+---------------------------+
+| Gráfico de linhas       | `geom_line()`             |
++-------------------------+---------------------------+
+
+## Analisar base de dados
+
+```{r, warning=FALSE}
+str(wooldridge::happiness)
+```
